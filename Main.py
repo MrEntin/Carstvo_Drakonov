@@ -1,6 +1,8 @@
 import random
 import time
 
+record = 0
+
 def displayIntro():
     print('''Вы находитесь в землях, заселённых драконами.
 Перед собой вы видите две пещеры. В одной из них - дружелюбный дракон,
@@ -8,7 +10,7 @@ def displayIntro():
 и голодный дракон, который мигом вас съест.
 Добро пожаловать в игру "Царство Драконов"
                                     by 2254''')
-    print()
+    print('Ваш рекорд: ' + str(record), 'монет')
 
 def chooseCave():
     cave = ''
@@ -27,7 +29,13 @@ def checkCave(chosenCave):
     friendlyCave = random.randint(1,2)
 
     if chosenCave == str(friendlyCave):
+        global record
         print('...делится с вами своими сокровищами!')
+        add_score = random.randint(100, 300)
+        print('Он поделился с вами ',add_score, 'монетами!')
+        score = add_score
+        if score > record:
+            record = record + score
     else:
         print('...мигом вас пожирает!')
 
